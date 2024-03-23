@@ -1,0 +1,17 @@
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        a: [0, 1]
+    steps:
+    - run: exit ${{ matrix.a }}
+
+  check:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - run: echo "done"
